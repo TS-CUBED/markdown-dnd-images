@@ -321,12 +321,11 @@ happened."
 ;;   (expand-file-name
     (concat dnd-save-directory
     (if dnd-save-buffer-name
-    "_"
+    (concat "_"
     (replace-regexp-in-string "[/ ]+" "_" (file-name-base buffer-file-name))
     "."
-    (file-name-extension buffer-file-name)
-;;    )   
-            ))))
+    (file-name-extension buffer-file-name)   
+            )))))
 
 ;; returns name of dir created
 (defun dnd-try-mkdir (dir)
