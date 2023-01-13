@@ -318,11 +318,14 @@ happened."
       (error (concat "ERROR: Couldn't find buffer-file-name "
                      "for current buffer")))
   (file-name-as-directory
-   (expand-file-name
+;;   (expand-file-name
     (concat dnd-save-directory
     (if dnd-save-buffer-name
-    (replace-regexp-in-string "[/ ]+" "_" buffer-file-name)
-    )   
+    "_"
+    (replace-regexp-in-string "[/ ]+" "_" (file-name-base buffer-file-name))
+    "."
+    (file-name-extension buffer-file-name)
+;;    )   
             ))))
 
 ;; returns name of dir created
