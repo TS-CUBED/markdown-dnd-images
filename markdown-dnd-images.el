@@ -305,15 +305,15 @@ happened."
 (defun dnd-insert-image-tag (text)
   (if (derived-mode-p 'markdown-mode)
   (if dnd-capture-source
-        (insert (format "<!-- %s\n[[%s]]" (format "Source: %s, accessed: %s -->" url (current-time-string)) text)))
+        (insert (format "<!-- %s\n![](%s)" (format "Source: %s, accessed: %s -->" url (current-time-string)) text)))
         (insert (format "![](%s)" text )))
-        (if dnd-view-inline
-        (markdown-display-inline-images)))
   (if (derived-mode-p 'org-mode)
   (if dnd-capture-source
     ;; (insert (format "#+caption: %s\n[[%s]]" (format "Source: %s, accessed: %s" url (current-time-string)) text))
     (insert (format "# %s\n[[%s]]" (format "Source: %s, accessed: %s" url (current-time-string)) text))
-    (insert (format "[[%s]]" text )))))
+    (insert (format "[[%s]]" text ))))
+(if dnd-view-inline
+        (markdown-display-inline-images)))
   ;; (if dnd-capture-source
   ;;   (insert (format "\n\n\x2ASource: %s; Accessed: %s\x2A" url (current-time-string) )))
 
