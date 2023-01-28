@@ -303,7 +303,10 @@ happened."
   action)
             
 (defun dnd-insert-image-tag (text)
-  (insert (format "![](%s)" text ))
+  (if (derived-mode-p 'markdown-mode)
+        (insert (format "![](%s)" text )))
+  (if (derived-mode-p 'org-mode)
+        (insert (format "[[%s]]" text )))
   (if dnd-capture-source
     (insert (format "\n\n\x2ASource: %s; Accessed: %s\x2A" url (current-time-string) ))
   )
